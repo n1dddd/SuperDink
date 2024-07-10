@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title_1": {
+				"__TYPE__": "FieldContent",
+				"value": "garage",
+				"type": "Text"
+			},
+			"title_2": {
+				"__TYPE__": "FieldContent",
+				"value": "dear",
+				"type": "Text"
+			},
+			"title_3": {
+				"__TYPE__": "FieldContent",
+				"value": "loose",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
