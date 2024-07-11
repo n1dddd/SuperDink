@@ -22,8 +22,8 @@
 				duration: 1,
 				delay: 1,
 				stagger: {
-					each: 0.2,
-					from: 'end'
+					each: 0.1,
+					from: 'random'
 				}
 			}
 		);
@@ -44,7 +44,7 @@
 			</div>
 			<div class="col-start-1 md:row-start-1">
 				<h1
-					class="mb-2 md:mb-8 text-[clamp(3rem,20vmin,9rem)] leading-none tracking-wide text-nowrap"
+					class="mb-2 md:mb-8 text-[clamp(3rem,20vmin,9rem)] font-extrabold leading-none tracking-wide text-nowrap"
 					aria-label={slice.primary.title_1 + "" + slice.primary.title_2 + "" + slice.primary.title_3}
 				>
 					{#if title_1_letters.length && title_2_letters && title_3_letters}
