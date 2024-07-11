@@ -2,7 +2,7 @@
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
-	import '@fontsource-variable/jost';
+	import '@fontsource/sarabun';
 	import "../app.css"
 </script>
 
@@ -19,7 +19,20 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
+
+<header>
+	Header
+</header>
+
+
 <main>
 	<slot />
 </main>
+
+<div class="background-gradient absolute inset-0 -z-50 max-h-screen" />
+<div class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
+
+<footer>
+	Footer
+</footer>
 <PrismicPreview {repositoryName} />
