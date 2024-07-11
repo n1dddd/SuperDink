@@ -5,18 +5,18 @@
 		"primary": {
 			"title_1": {
 				"__TYPE__": "FieldContent",
-				"value": "garage",
-				"type": "Text"
+				"type": "Text",
+				"value": "Premier"
 			},
 			"title_2": {
 				"__TYPE__": "FieldContent",
-				"value": "dear",
-				"type": "Text"
+				"type": "Text",
+				"value": "Esports"
 			},
 			"title_3": {
 				"__TYPE__": "FieldContent",
-				"value": "loose",
-				"type": "Text"
+				"type": "Text",
+				"value": "Club"
 			}
 		},
 		"items": []
