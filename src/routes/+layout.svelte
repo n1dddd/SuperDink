@@ -2,6 +2,8 @@
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
+	import '@fontsource-variable/jost';
+	import "../app.css"
 </script>
 
 <svelte:head>
