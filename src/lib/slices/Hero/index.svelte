@@ -49,7 +49,7 @@
 				>
 					{#if title_1_letters.length && title_2_letters && title_3_letters}
 						<span
-							class="block bg-gradient-to-tr from-blue-500 via-blue-300 to-blue-500 bg-clip-text text-transparent"
+							class="block bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent"
 						>
 							{#each title_1_letters as title_1_letter}
 								<span class="name-animation inline-block">{title_1_letter}</span>
