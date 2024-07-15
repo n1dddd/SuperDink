@@ -4,7 +4,7 @@
     import Sprdnk from "./SPRDNK.svelte";
 </script>
 
-<Environment files="night.hdr" path="/" format="hdr" />
+<Environment files="concrete.hdr" path="/" format="hdr" />
 
 <T.PerspectiveCamera
     makeDefault
