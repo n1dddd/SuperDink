@@ -5,6 +5,9 @@
 	import '@fontsource/sarabun';
 	import "../app.css"
 	import Footer from '$lib/components/Footer.svelte';
+	import Header from '$lib/components/Header.svelte';
+
+	export let data;
 </script>
 
 <svelte:head>
@@ -21,9 +24,7 @@
 	{/if}
 </svelte:head>
 
-<header>
-	Header
-</header>
+<Header settings={data.settings}/>
 
 
 <main>
@@ -33,5 +34,5 @@
 <div class="background-gradient absolute inset-0 -z-50 max-h-screen" />
 <div class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('noisetexture.jpg')] opacity-20 mix-blend-soft-light" />
 
-<Footer />
+<Footer settings={data.settings}/>
 <PrismicPreview {repositoryName} />
