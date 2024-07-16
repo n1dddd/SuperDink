@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-start-1 md:row-start-1">
 				<h1
-					class="mb-2 md:mb-8 text-[clamp(3rem,30vmin,10rem)] font-extrabold leading-none tracking-wider text-nowrap"
+					class="mb-2 md:mb-8 text-[clamp(5.5rem,20vmin,10rem)] font-extrabold leading-none tracking-wider text-nowrap"
 					aria-label={slice.primary.title_1 + "" + slice.primary.title_2 + "" + slice.primary.title_3}
 				>
 					 <div class="block">
