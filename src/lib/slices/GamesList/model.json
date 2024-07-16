@@ -1,0 +1,57 @@
+{
+  "id": "games_list",
+  "type": "SharedSlice",
+  "name": "GamesList",
+  "description": "GamesList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "item": {
+          "type": "Group",
+          "config": {
+            "label": "Item",
+            "repeat": true,
+            "fields": {
+              "game_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Game Name",
+                  "placeholder": ""
+                }
+              },
+              "tech_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Tech_color",
+                  "placeholder": ""
+                }
+              },
+              "game_logo": {
+                "type": "Image",
+                "config": {
+                  "label": "Game_Logo",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
