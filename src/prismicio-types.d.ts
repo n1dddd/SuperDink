@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = HeroSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice = NewsSlotSlice | GamesListSlice | HeroSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -224,6 +224,93 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 export type AllDocumentTypes = PageDocument | SettingsDocument;
 
 /**
+ * Item in *GamesList → Default → Primary → Item*
+ */
+export interface GamesListSliceDefaultPrimaryItemItem {
+	/**
+	 * Game Name field in *GamesList → Default → Primary → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: games_list.default.primary.item[].game_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	game_name: prismic.KeyTextField;
+
+	/**
+	 * Tech_color field in *GamesList → Default → Primary → Item*
+	 *
+	 * - **Field Type**: Color
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: games_list.default.primary.item[].tech_color
+	 * - **Documentation**: https://prismic.io/docs/field#color
+	 */
+	tech_color: prismic.ColorField;
+
+	/**
+	 * Game_Logo field in *GamesList → Default → Primary → Item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: games_list.default.primary.item[].game_logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	game_logo: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *GamesList → Default → Primary*
+ */
+export interface GamesListSliceDefaultPrimary {
+	/**
+	 * Heading field in *GamesList → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: games_list.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	heading: prismic.KeyTextField;
+
+	/**
+	 * Item field in *GamesList → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: games_list.default.primary.item[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	item: prismic.GroupField<Simplify<GamesListSliceDefaultPrimaryItemItem>>;
+}
+
+/**
+ * Default variation for GamesList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GamesListSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<GamesListSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *GamesList*
+ */
+type GamesListSliceVariation = GamesListSliceDefault;
+
+/**
+ * GamesList Shared Slice
+ *
+ * - **API ID**: `games_list`
+ * - **Description**: GamesList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GamesListSlice = prismic.SharedSlice<'games_list', GamesListSliceVariation>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -286,6 +373,68 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
 /**
+ * Primary content in *NewsSlot → Default → Primary*
+ */
+export interface NewsSlotSliceDefaultPrimary {
+	/**
+	 * News_blurb field in *NewsSlot → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_blurb
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	news_blurb: prismic.KeyTextField;
+
+	/**
+	 * News_Image field in *NewsSlot → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	news_image: prismic.ImageField<never>;
+
+	/**
+	 * news_link field in *NewsSlot → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	news_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for NewsSlot Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSlotSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NewsSlotSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *NewsSlot*
+ */
+type NewsSlotSliceVariation = NewsSlotSliceDefault;
+
+/**
+ * NewsSlot Shared Slice
+ *
+ * - **API ID**: `news_slot`
+ * - **Description**: NewsSlot
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSlotSlice = prismic.SharedSlice<'news_slot', NewsSlotSliceVariation>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -344,10 +493,19 @@ declare module '@prismicio/client' {
 			SettingsDocumentData,
 			SettingsDocumentDataNavItemItem,
 			AllDocumentTypes,
+			GamesListSlice,
+			GamesListSliceDefaultPrimaryItemItem,
+			GamesListSliceDefaultPrimary,
+			GamesListSliceVariation,
+			GamesListSliceDefault,
 			HeroSlice,
 			HeroSliceDefaultPrimary,
 			HeroSliceVariation,
 			HeroSliceDefault,
+			NewsSlotSlice,
+			NewsSlotSliceDefaultPrimary,
+			NewsSlotSliceVariation,
+			NewsSlotSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
