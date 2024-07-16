@@ -4,6 +4,7 @@
 	import Button from "./Button.svelte";
     import IconMenu from '~icons/mingcute/menu-fill'
     import IconClose from '~icons/mingcute/close-fill'
+	import Bounded from "./Bounded.svelte";
 
     export let settings: Content.SettingsDocument;
     let open = false;
@@ -13,7 +14,7 @@
     }
 </script>
 
-<header class="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4 relative">
+<Bounded as="header" size="xl" class="top-0 z-50 mx-auto md:sticky md:top-4 relative">
     <nav>
         <div class="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m4 md:flex-row md:items-center md:rounded-xl">
             <div class="flex items-center justify-between">
@@ -51,4 +52,4 @@
             </ul>
         </div>
     </nav>
-</header>
+</Bounded>
