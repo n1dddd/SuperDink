@@ -17,6 +17,7 @@
 		"@iconify-json/fa-brands": "^1.1.8",
 		"@iconify-json/fa6-brands": "^1.1.20",
 		"@iconify-json/mingcute": "^1.1.18",
+		"@iconify-json/teenyicons": "^1.1.9",
 		"@slicemachine/adapter-sveltekit": "^0.3.42",
 		"@sveltejs/adapter-auto": "^3.2.2",
 		"@sveltejs/kit": "^2.5.15",
@@ -49,6 +50,7 @@
 		"@fontsource/sarabun": "^5.0.20",
 		"@prismicio/client": "^7.6.0",
 		"@prismicio/svelte": "^1.2.0",
+		"clsx": "^2.1.1",
 		"gsap": "^3.12.5"
 	}
 }
