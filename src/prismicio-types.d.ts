@@ -4,7 +4,82 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = NewsSlotSlice | GamesListSlice | HeroSlice | RichTextSlice;
+type BlogDocumentDataSlicesSlice = BlogPostSlice;
+
+/**
+ * Content for Blog documents
+ */
+interface BlogDocumentData {
+	/**
+	 * Blog_Title field in *Blog*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Slice Zone field in *Blog*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<BlogDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Blog*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: blog.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Blog*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: blog.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Blog*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Blog document from Prismic
+ *
+ * - **API ID**: `blog`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<BlogDocumentData>,
+	'blog',
+	Lang
+>;
+
+type PageDocumentDataSlicesSlice = BlogPostSlice | NewsSlotSlice | GamesListSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -221,7 +296,79 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+export type AllDocumentTypes = BlogDocument | PageDocument | SettingsDocument;
+
+/**
+ * Primary content in *BlogPost → Default → Primary*
+ */
+export interface BlogPostSliceDefaultPrimary {
+	/**
+	 * news_description field in *BlogPost → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog_post.default.primary.news_description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	news_description: prismic.RichTextField;
+
+	/**
+	 * news_title field in *BlogPost → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog_post.default.primary.news_title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	news_title: prismic.KeyTextField;
+
+	/**
+	 * news_image field in *BlogPost → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog_post.default.primary.news_image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	news_image: prismic.ImageField<never>;
+
+	/**
+	 * news_time field in *BlogPost → Default → Primary*
+	 *
+	 * - **Field Type**: Timestamp
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blog_post.default.primary.news_time
+	 * - **Documentation**: https://prismic.io/docs/field#timestamp
+	 */
+	news_time: prismic.TimestampField;
+}
+
+/**
+ * Default variation for BlogPost Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogPostSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<BlogPostSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *BlogPost*
+ */
+type BlogPostSliceVariation = BlogPostSliceDefault;
+
+/**
+ * BlogPost Shared Slice
+ *
+ * - **API ID**: `blog_post`
+ * - **Description**: BlogPost
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogPostSlice = prismic.SharedSlice<'blog_post', BlogPostSliceVariation>;
 
 /**
  * Item in *GamesList → Default → Primary → Item*
@@ -373,38 +520,73 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
 /**
- * Primary content in *NewsSlot → Default → Primary*
+ * Item in *NewsSlot → Default → Primary → News_item*
  */
-export interface NewsSlotSliceDefaultPrimary {
+export interface NewsSlotSliceDefaultPrimaryNewsItemItem {
 	/**
-	 * News_blurb field in *NewsSlot → Default → Primary*
+	 * News_title field in *NewsSlot → Default → Primary → News_item*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: news_slot.default.primary.news_blurb
+	 * - **API ID Path**: news_slot.default.primary.news_item[].news_title
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
-	news_blurb: prismic.KeyTextField;
+	news_title: prismic.KeyTextField;
 
 	/**
-	 * News_Image field in *NewsSlot → Default → Primary*
+	 * news_link field in *NewsSlot → Default → Primary → News_item*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_item[].news_link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	news_link: prismic.LinkField;
+
+	/**
+	 * news_image field in *NewsSlot → Default → Primary → News_item*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: news_slot.default.primary.news_image
+	 * - **API ID Path**: news_slot.default.primary.news_item[].news_image
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	news_image: prismic.ImageField<never>;
 
 	/**
-	 * news_link field in *NewsSlot → Default → Primary*
+	 *  news_blurb field in *NewsSlot → Default → Primary → News_item*
 	 *
-	 * - **Field Type**: Link
+	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: news_slot.default.primary.news_link
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 * - **API ID Path**: news_slot.default.primary.news_item[].news_blurb
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
-	news_link: prismic.LinkField;
+	news_blurb: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *NewsSlot → Default → Primary*
+ */
+export interface NewsSlotSliceDefaultPrimary {
+	/**
+	 * News_Heading field in *NewsSlot → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_header
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	news_header: prismic.KeyTextField;
+
+	/**
+	 * News_item field in *NewsSlot → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_slot.default.primary.news_item[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	news_item: prismic.GroupField<Simplify<NewsSlotSliceDefaultPrimaryNewsItemItem>>;
 }
 
 /**
@@ -434,48 +616,6 @@ type NewsSlotSliceVariation = NewsSlotSliceDefault;
  */
 export type NewsSlotSlice = prismic.SharedSlice<'news_slot', NewsSlotSliceVariation>;
 
-/**
- * Primary content in *RichText → Default → Primary*
- */
-export interface RichTextSliceDefaultPrimary {
-	/**
-	 * Content field in *RichText → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Lorem ipsum...
-	 * - **API ID Path**: rich_text.default.primary.content
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	content: prismic.RichTextField;
-}
-
-/**
- * Default variation for RichText Slice
- *
- * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<RichTextSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *RichText*
- */
-type RichTextSliceVariation = RichTextSliceDefault;
-
-/**
- * RichText Shared Slice
- *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
-
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -486,6 +626,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			BlogDocument,
+			BlogDocumentData,
+			BlogDocumentDataSlicesSlice,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
@@ -493,6 +636,10 @@ declare module '@prismicio/client' {
 			SettingsDocumentData,
 			SettingsDocumentDataNavItemItem,
 			AllDocumentTypes,
+			BlogPostSlice,
+			BlogPostSliceDefaultPrimary,
+			BlogPostSliceVariation,
+			BlogPostSliceDefault,
 			GamesListSlice,
 			GamesListSliceDefaultPrimaryItemItem,
 			GamesListSliceDefaultPrimary,
@@ -503,13 +650,10 @@ declare module '@prismicio/client' {
 			HeroSliceVariation,
 			HeroSliceDefault,
 			NewsSlotSlice,
+			NewsSlotSliceDefaultPrimaryNewsItemItem,
 			NewsSlotSliceDefaultPrimary,
 			NewsSlotSliceVariation,
-			NewsSlotSliceDefault,
-			RichTextSlice,
-			RichTextSliceDefaultPrimary,
-			RichTextSliceVariation,
-			RichTextSliceDefault
+			NewsSlotSliceDefault
 		};
 	}
 }
