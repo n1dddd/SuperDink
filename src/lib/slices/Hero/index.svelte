@@ -5,7 +5,6 @@
 	import gsap from 'gsap';
 	export let slice: Content.HeroSlice;
 
-
 	onMount(() => {
 		const tl = gsap.timeline();
 
@@ -17,7 +16,7 @@
 			{
 				opacity: 1,
 				duration: 4,
-				delay: 0.1,
+				delay: 0.1
 			}
 		);
 	});
@@ -38,40 +37,48 @@
 			<div class="col-start-1 md:row-start-1">
 				<h1
 					class="mb-2 md:mb-8 text-[clamp(5.5rem,20vmin,10rem)] font-extrabold leading-none tracking-wider text-nowrap"
-					aria-label={slice.primary.title_1 + "" + slice.primary.title_2 + "" + slice.primary.title_3}
+					aria-label={slice.primary.title_1 +
+						'' +
+						slice.primary.title_2 +
+						'' +
+						slice.primary.title_3}
 				>
-					 <div class="block">
+					<div class="block name-animation">
 						<span
-							class="name-animation absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm">
-								<span class="inline-block">{slice.primary.title_1}</span>
+							class="absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm"
+						>
+							<span class="inline-block">{slice.primary.title_1}</span>
 						</span>
 						<span
-							class="name-animation relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent">
-								<span class=" inline-block">{slice.primary.title_1}</span>
+							class="relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent"
+						>
+							<span class=" inline-block">{slice.primary.title_1}</span>
 						</span>
-					 </div>
-					 <div class="block">
+					</div>
+					<div class="block name-animation">
 						<span
-							class="name-animation absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm">
-								<span class="inline-block">{slice.primary.title_2}</span>
-
-						</span>
-						<span
-							class="name-animation relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent">
-								<span class=" inline-block">{slice.primary.title_2}</span>
-						</span>
-					 </div>
-					 <div class="block">
-						<span
-							class="name-animation absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm">
-								<span class="inline-block">{slice.primary.title_3}</span>
-
+							class="absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm"
+						>
+							<span class="inline-block">{slice.primary.title_2}</span>
 						</span>
 						<span
-							class="name-animation relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent">
-								<span class=" inline-block">{slice.primary.title_3}</span>
+							class="relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent"
+						>
+							<span class=" inline-block">{slice.primary.title_2}</span>
 						</span>
-					 </div>
+					</div>
+					<div class="block name-animation">
+						<span
+							class="absolute bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent blur-sm"
+						>
+							<span class="inline-block">{slice.primary.title_3}</span>
+						</span>
+						<span
+							class="relative bg-gradient-to-tr from-blue-700 via-blue-300 to-blue-500 bg-clip-text text-transparent"
+						>
+							<span class=" inline-block">{slice.primary.title_3}</span>
+						</span>
+					</div>
 				</h1>
 			</div>
 		</div>
