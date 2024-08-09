@@ -12,27 +12,50 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "news_blurb": {
+        "news_header": {
           "type": "Text",
           "config": {
-            "label": "News_blurb",
+            "label": "News_Heading",
             "placeholder": ""
           }
         },
-        "news_image": {
-          "type": "Image",
+        "news_item": {
+          "type": "Group",
           "config": {
-            "label": "News_Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "news_link": {
-          "type": "Link",
-          "config": {
-            "label": "news_link",
-            "placeholder": "",
-            "select": null
+            "label": "News_item",
+            "repeat": true,
+            "fields": {
+              "news_title": {
+                "type": "Text",
+                "config": {
+                  "label": "News_title",
+                  "placeholder": ""
+                }
+              },
+              "news_link": {
+                "type": "Link",
+                "config": {
+                  "label": "news_link",
+                  "placeholder": "",
+                  "select": null
+                }
+              },
+              "news_image": {
+                "type": "Image",
+                "config": {
+                  "label": "news_image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "news_blurb": {
+                "type": "Text",
+                "config": {
+                  "label": " news_blurb",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },
