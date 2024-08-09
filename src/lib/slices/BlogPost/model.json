@@ -1,0 +1,50 @@
+{
+  "id": "blog_post",
+  "type": "SharedSlice",
+  "name": "BlogPost",
+  "description": "BlogPost",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "news_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "news_description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "news_title": {
+          "type": "Text",
+          "config": {
+            "label": "news_title",
+            "placeholder": ""
+          }
+        },
+        "news_image": {
+          "type": "Image",
+          "config": {
+            "label": "news_image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "news_time": {
+          "type": "Timestamp",
+          "config": {
+            "label": "news_time",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
