@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"blog_post": {
+							"type": "SharedSlice"
+						},
 						"news_slot": {
 							"type": "SharedSlice"
 						},
@@ -34,9 +37,6 @@
 							"type": "SharedSlice"
 						},
 						"hero": {
-							"type": "SharedSlice"
-						},
-						"rich_text": {
 							"type": "SharedSlice"
 						}
 					}
