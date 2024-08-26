@@ -79,6 +79,81 @@ export type BlogDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
+type MerchDocumentDataSlicesSlice = MerchTShirtSlice;
+
+/**
+ * Content for Merch documents
+ */
+interface MerchDocumentData {
+	/**
+	 * Title field in *Merch*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Slice Zone field in *Merch*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<MerchDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Merch*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: merch.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Merch*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: merch.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Merch*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Merch document from Prismic
+ *
+ * - **API ID**: `merch`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MerchDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<MerchDocumentData>,
+	'merch',
+	Lang
+>;
+
 type PageDocumentDataSlicesSlice = BlogPostSlice | NewsSlotSlice | GamesListSlice | HeroSlice;
 
 /**
@@ -151,6 +226,70 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
 	Simplify<PageDocumentData>,
 	'page',
+	Lang
+>;
+
+type RostersDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Rosters documents
+ */
+interface RostersDocumentData {
+	/**
+	 * Slice Zone field in *Rosters*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rosters.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<RostersDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Rosters*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: rosters.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Rosters*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: rosters.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Rosters*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rosters.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Rosters document from Prismic
+ *
+ * - **API ID**: `rosters`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RostersDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<RostersDocumentData>,
+	'rosters',
 	Lang
 >;
 
@@ -247,7 +386,18 @@ interface SettingsDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	x_link: prismic.LinkField /**
+	x_link: prismic.LinkField;
+
+	/**
+	 * sprdnk_logo field in *Settings*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.sprdnk_logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	sprdnk_logo: prismic.ImageField<never> /**
 	 * Meta Title field in *Settings*
 	 *
 	 * - **Field Type**: Text
@@ -296,7 +446,12 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = BlogDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+	| BlogDocument
+	| MerchDocument
+	| PageDocument
+	| RostersDocument
+	| SettingsDocument;
 
 /**
  * Primary content in *BlogPost → Default → Primary*
@@ -520,6 +675,89 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
 /**
+ * Primary content in *MerchTShirt → Default → Primary*
+ */
+export interface MerchTShirtSliceDefaultPrimary {
+	/**
+	 * T_Shirt_Title field in *MerchTShirt → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch_t_shirt.default.primary.t_shirt_title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	t_shirt_title: prismic.KeyTextField;
+
+	/**
+	 * T_Shirt_Description field in *MerchTShirt → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch_t_shirt.default.primary.t_shirt_description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	t_shirt_description: prismic.RichTextField;
+
+	/**
+	 * T_Shirt_Front field in *MerchTShirt → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch_t_shirt.default.primary.t_shirt_front
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	t_shirt_front: prismic.ImageField<never>;
+
+	/**
+	 * T_Shirt_Back field in *MerchTShirt → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: merch_t_shirt.default.primary.t_shirt_back
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	t_shirt_back: prismic.ImageField<never>;
+
+	/**
+	 * Size field in *MerchTShirt → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Small
+	 * - **API ID Path**: merch_t_shirt.default.primary.size
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	size: prismic.SelectField<'Small' | 'Medium' | 'Large', 'filled'>;
+}
+
+/**
+ * Default variation for MerchTShirt Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MerchTShirtSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<MerchTShirtSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *MerchTShirt*
+ */
+type MerchTShirtSliceVariation = MerchTShirtSliceDefault;
+
+/**
+ * MerchTShirt Shared Slice
+ *
+ * - **API ID**: `merch_t_shirt`
+ * - **Description**: MerchTShirt
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MerchTShirtSlice = prismic.SharedSlice<'merch_t_shirt', MerchTShirtSliceVariation>;
+
+/**
  * Item in *NewsSlot → Default → Primary → News_item*
  */
 export interface NewsSlotSliceDefaultPrimaryNewsItemItem {
@@ -629,9 +867,15 @@ declare module '@prismicio/client' {
 			BlogDocument,
 			BlogDocumentData,
 			BlogDocumentDataSlicesSlice,
+			MerchDocument,
+			MerchDocumentData,
+			MerchDocumentDataSlicesSlice,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			RostersDocument,
+			RostersDocumentData,
+			RostersDocumentDataSlicesSlice,
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataNavItemItem,
@@ -649,6 +893,10 @@ declare module '@prismicio/client' {
 			HeroSliceDefaultPrimary,
 			HeroSliceVariation,
 			HeroSliceDefault,
+			MerchTShirtSlice,
+			MerchTShirtSliceDefaultPrimary,
+			MerchTShirtSliceVariation,
+			MerchTShirtSliceDefault,
 			NewsSlotSlice,
 			NewsSlotSliceDefaultPrimaryNewsItemItem,
 			NewsSlotSliceDefaultPrimary,
