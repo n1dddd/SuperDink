@@ -1,0 +1,64 @@
+{
+  "id": "merch_t_shirt",
+  "type": "SharedSlice",
+  "name": "MerchTShirt",
+  "description": "MerchTShirt",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "t_shirt_title": {
+          "type": "Text",
+          "config": {
+            "label": "T_Shirt_Title",
+            "placeholder": ""
+          }
+        },
+        "t_shirt_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "T_Shirt_Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "t_shirt_front": {
+          "type": "Image",
+          "config": {
+            "label": "T_Shirt_Front",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "t_shirt_back": {
+          "type": "Image",
+          "config": {
+            "label": "T_Shirt_Back",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "size": {
+          "type": "Select",
+          "config": {
+            "label": "Size",
+            "placeholder": "",
+            "options": [
+              "Small",
+              "Medium",
+              "Large"
+            ],
+            "default_value": "Small"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
