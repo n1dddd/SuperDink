@@ -69,6 +69,14 @@
 					"allowTargetBlank": false,
 					"select": null
 				}
+			},
+			"sprdnk_logo": {
+				"type": "Image",
+				"config": {
+					"label": "sprdnk_logo",
+					"constraint": {},
+					"thumbnails": []
+				}
 			}
 		},
 		"MetaData": {
