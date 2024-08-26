@@ -5,6 +5,7 @@
     import IconMenu from '~icons/mingcute/menu-fill'
     import IconClose from '~icons/mingcute/close-fill'
 	import Bounded from "./Bounded.svelte";
+	import { PrismicImage } from "@prismicio/svelte";
 
     export let settings: Content.SettingsDocument;
     let open = false;
@@ -19,7 +20,10 @@
         <div class="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m4 md:flex-row md:items-center md:rounded-xl">
             <div class="flex items-center justify-between">
                 <a href="/" aria-label="Homepage"
-                class="text-xl font-extrabold tracking-wider text-slate-900">{settings.data.name}</a>
+                class="text-2xl font-extrabold tracking-wider text-slate-900 flex flex-row">
+                    {settings.data.name}
+                    <PrismicImage field={settings.data.sprdnk_logo} width={35}/>
+            </a>
                 <button aria-expanded={open} aria-label="Open Menu" class="block p-2 text-2xl text-slate-200 md:hidden" on:click={() => (open=true)}>
                     <IconMenu />
                 </button>
@@ -27,7 +31,7 @@
             <!--Mobile Nav-->
             <ul class={`fixed inset-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden ${open ? 'translate-x-0' : 'translate-x-[100%]'}`}>
                 <li>
-                    <button aria-expanded={open} aria-label="Close Menu" class="fixed right-4 top-3 block p-2 text-2l text-slate-900 md:hidden" on:click={() => (open=false)}>
+                    <button aria-expanded={open} aria-label="Close Menu" class="fixed right-4 top-3 block p-2 text-xl text-slate-900 md:hidden" on:click={() => (open=false)}>
                         <IconClose />
                     </button> 
                 </li>
@@ -40,7 +44,7 @@
                     <Button linkField={settings.data.cta_link} label={settings.data.cta_label} />
                 {/if}
             </ul>
-            <ul class="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+            <ul class="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex text-xl">
                 {#each settings.data.nav_item as {label, link}} 
                     <li>
                         <NavBarLink field={link} label={label} {onLinkClick} type="desktop"/>
