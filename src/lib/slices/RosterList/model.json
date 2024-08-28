@@ -1,0 +1,140 @@
+{
+  "id": "roster_list",
+  "type": "SharedSlice",
+  "name": "RosterList",
+  "description": "RosterList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "roster_header": {
+          "type": "Text",
+          "config": {
+            "label": "Roster_Header",
+            "placeholder": ""
+          }
+        },
+        "roster_item": {
+          "type": "Group",
+          "config": {
+            "label": "roster_item",
+            "repeat": true,
+            "fields": {
+              "roster_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Roster_title",
+                  "placeholder": ""
+                }
+              },
+              "game_image": {
+                "type": "Image",
+                "config": {
+                  "label": "game_image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_1": {
+                "type": "Image",
+                "config": {
+                  "label": "roster_member_1",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_2": {
+                "type": "Image",
+                "config": {
+                  "label": "roster_member_2",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_3": {
+                "type": "Image",
+                "config": {
+                  "label": "roster_member_3",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_4": {
+                "type": "Image",
+                "config": {
+                  "label": "roster_member_4",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_5": {
+                "type": "Image",
+                "config": {
+                  "label": "roster_member_5",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "game_logo": {
+                "type": "Image",
+                "config": {
+                  "label": "game_logo",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "roster_member_1_name": {
+                "type": "Text",
+                "config": {
+                  "label": "roster_member_1_name",
+                  "placeholder": ""
+                }
+              },
+              "roster_member_2_name": {
+                "type": "Text",
+                "config": {
+                  "label": "roster_member_2_name",
+                  "placeholder": ""
+                }
+              },
+              "roster_member_3_name": {
+                "type": "Text",
+                "config": {
+                  "label": "roster_member_3_name",
+                  "placeholder": ""
+                }
+              },
+              "roster_member_4_name": {
+                "type": "Text",
+                "config": {
+                  "label": "roster_member_4_name",
+                  "placeholder": ""
+                }
+              },
+              "roster_member_5_name": {
+                "type": "Text",
+                "config": {
+                  "label": "roster_member_5_name",
+                  "placeholder": ""
+                }
+              },
+              "game_colour": {
+                "type": "Color",
+                "config": {
+                  "label": "game_colour",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
