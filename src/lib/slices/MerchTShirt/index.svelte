@@ -2,7 +2,7 @@
 	import Bounded from '$lib/components/Bounded.svelte';
 	import Heading from '$lib/components/Heading.svelte';
 	import type { Content } from '@prismicio/client';
-	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
+	import { PrismicRichText } from '@prismicio/svelte';
 	import ImageGallery from '@react2svelte/image-gallery';
 	export let slice: Content.MerchTShirtSlice;
 
