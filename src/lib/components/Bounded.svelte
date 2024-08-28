@@ -5,7 +5,7 @@
 
 <svelte:element
     this={tag}
-    {...$$restProps} class={`px-4 py-10 md:px-6 md:py-14 lg:py-16 ${$$props.class}`}
+    {...$$restProps} class={`py-6 ${$$props.class}`}
     >
     <div class="flex flex-col mx-auto w-full max-w-7xl">
         <slot/>
