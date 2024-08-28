@@ -229,7 +229,7 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-type RostersDocumentDataSlicesSlice = never;
+type RostersDocumentDataSlicesSlice = RosterListSlice;
 
 /**
  * Content for Rosters documents
@@ -343,28 +343,6 @@ interface SettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	nav_item: prismic.GroupField<Simplify<SettingsDocumentDataNavItemItem>>;
-
-	/**
-	 * CTA Link field in *Settings*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: settings.cta_link
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	cta_link: prismic.LinkField;
-
-	/**
-	 * CTA Label field in *Settings*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: settings.cta_label
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	cta_label: prismic.KeyTextField;
 
 	/**
 	 * Insta Link field in *Settings*
@@ -854,6 +832,203 @@ type NewsSlotSliceVariation = NewsSlotSliceDefault;
  */
 export type NewsSlotSlice = prismic.SharedSlice<'news_slot', NewsSlotSliceVariation>;
 
+/**
+ * Item in *RosterList → Default → Primary → roster_item*
+ */
+export interface RosterListSliceDefaultPrimaryRosterItemItem {
+	/**
+	 * Roster_title field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_title: prismic.KeyTextField;
+
+	/**
+	 * game_image field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].game_image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	game_image: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_1 field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_1
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	roster_member_1: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_2 field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_2
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	roster_member_2: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_3 field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_3
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	roster_member_3: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_4 field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_4
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	roster_member_4: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_5 field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_5
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	roster_member_5: prismic.ImageField<never>;
+
+	/**
+	 * game_logo field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].game_logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	game_logo: prismic.ImageField<never>;
+
+	/**
+	 * roster_member_1_name field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_1_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_member_1_name: prismic.KeyTextField;
+
+	/**
+	 * roster_member_2_name field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_2_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_member_2_name: prismic.KeyTextField;
+
+	/**
+	 * roster_member_3_name field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_3_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_member_3_name: prismic.KeyTextField;
+
+	/**
+	 * roster_member_4_name field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_4_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_member_4_name: prismic.KeyTextField;
+
+	/**
+	 * roster_member_5_name field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].roster_member_5_name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_member_5_name: prismic.KeyTextField;
+
+	/**
+	 * game_colour field in *RosterList → Default → Primary → roster_item*
+	 *
+	 * - **Field Type**: Color
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[].game_colour
+	 * - **Documentation**: https://prismic.io/docs/field#color
+	 */
+	game_colour: prismic.ColorField;
+}
+
+/**
+ * Primary content in *RosterList → Default → Primary*
+ */
+export interface RosterListSliceDefaultPrimary {
+	/**
+	 * Roster_Header field in *RosterList → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_header
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	roster_header: prismic.KeyTextField;
+
+	/**
+	 * roster_item field in *RosterList → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: roster_list.default.primary.roster_item[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	roster_item: prismic.GroupField<Simplify<RosterListSliceDefaultPrimaryRosterItemItem>>;
+}
+
+/**
+ * Default variation for RosterList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RosterListSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<RosterListSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *RosterList*
+ */
+type RosterListSliceVariation = RosterListSliceDefault;
+
+/**
+ * RosterList Shared Slice
+ *
+ * - **API ID**: `roster_list`
+ * - **Description**: RosterList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RosterListSlice = prismic.SharedSlice<'roster_list', RosterListSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -901,7 +1076,12 @@ declare module '@prismicio/client' {
 			NewsSlotSliceDefaultPrimaryNewsItemItem,
 			NewsSlotSliceDefaultPrimary,
 			NewsSlotSliceVariation,
-			NewsSlotSliceDefault
+			NewsSlotSliceDefault,
+			RosterListSlice,
+			RosterListSliceDefaultPrimaryRosterItemItem,
+			RosterListSliceDefaultPrimary,
+			RosterListSliceVariation,
+			RosterListSliceDefault
 		};
 	}
 }
