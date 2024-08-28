@@ -40,9 +40,6 @@
                         <NavBarLink field={link} label={label} {onLinkClick} type="mobile"/>
                     </li>
                 {/each}
-                {#if isFilled.link(settings.data.cta_link)}
-                    <Button linkField={settings.data.cta_link} label={settings.data.cta_label} />
-                {/if}
             </ul>
             <ul class="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex text-xl">
                 {#each settings.data.nav_item as {label, link}} 
@@ -50,9 +47,6 @@
                         <NavBarLink field={link} label={label} {onLinkClick} type="desktop"/>
                     </li>
                 {/each}
-                {#if isFilled.link(settings.data.cta_link)}
-                    <Button linkField={settings.data.cta_link} label={settings.data.cta_label} class="ml-3" />
-                {/if}
             </ul>
         </div>
     </nav>
