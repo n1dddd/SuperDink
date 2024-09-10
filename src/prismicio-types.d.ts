@@ -236,6 +236,17 @@ type RostersDocumentDataSlicesSlice = RosterListSlice;
  */
 interface RostersDocumentData {
 	/**
+	 * Title field in *Rosters*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rosters.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
 	 * Slice Zone field in *Rosters*
 	 *
 	 * - **Field Type**: Slice Zone

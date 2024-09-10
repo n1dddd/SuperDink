@@ -29,7 +29,7 @@
 			<ImageGallery items={images} showThumbnails={true} showBullets={false} showPlayButton={false} showFullscreenButton={false}/>
 			<div class="flex flex-col md:text-lg text-md text-slate-300 gap-y-8 justify-around text-center">
 				<PrismicRichText field={slice.primary.t_shirt_description} />
-				{slice.primary.size}
+				
 			</div>
 
 		</div>
