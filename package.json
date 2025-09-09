@@ -55,5 +55,8 @@
 		"clsx": "^2.1.1",
 		"gsap": "^3.12.5",
 		"postprocessing": "^6.36.0"
-	}
+	},
+	"engines": {
+	"node": "20"
+}
 }
